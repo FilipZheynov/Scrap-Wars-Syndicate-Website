@@ -1,12 +1,12 @@
-import BannerVideo from "../../assets/BannerVideo.mp4";
+import BannerImg from "../../assets/Banner.jpg";
 import Button from "../ui/Button";
 
 export default function Banner() {
   return (
     <section className="w-full">
       <div className="relative w-full h-max">
-        <div className="w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
-          <video autoPlay loop muted playsInline src={BannerVideo} className="w-full h-full object-cover object-top" >Your browser does not support HTML5 video.</video>
+        <div className="w-full h-96 md:h-[500px] lg:h-[700px] overflow-hidden">
+         <img src={BannerImg} alt="banner" className="w-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-[var(--bg-overlay)]"></div>
 
