@@ -7,7 +7,7 @@ import NotFound from "../pages/NotFound/NotFound";
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Scrap-Wars-Syndicate-Website">
     <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
