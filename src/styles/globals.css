@@ -1,0 +1,127 @@
+/**
+ * Color System
+ * 
+ * All colors are centralized here for easy customization.
+ * To change the theme, simply update the hex values below.
+ * 
+ * Usage in components:
+ * - CSS: color: var(--primary);
+ * - Tailwind: text-[var(--primary)] or bg-[var(--primary)]
+ * 
+ * Color Categories:
+ * - Primary: Main brand color and variations
+ * - Secondary: Supporting colors
+ * - Neutral: Grayscale palette
+ * - Background: Page and component backgrounds
+ * - Text: Text color variations
+ * - Border: Border colors
+ * - State: Success, warning, error, info colors
+ */
+
+:root {
+    /* Primary Colors - Main brand color */
+    --primary: #eb2525;
+    --primary-light: #f87171;  /* red-400 */
+    --primary-base: #dc2626;    /* red-600 */
+    --primary-dark: #991b1b;    /* red-800 */
+    --primary-accent: #fca5a5;  /* red-300 */
+    
+    /* Secondary Colors */
+    --secondary: #d2d2d5;
+    --secondary-light: #e5e7eb; /* gray-200 */
+    --secondary-base: #9ca3af;  /* gray-400 */
+    --secondary-dark: #4b5563;  /* gray-600 */
+    
+    /* Neutral Colors */
+    --neutral-50: #f9fafb;
+    --neutral-100: #f3f4f6;
+    --neutral-200: #e5e7eb;
+    --neutral-300: #d1d5db;
+    --neutral-400: #9ca3af;
+    --neutral-500: #6b7280;
+    --neutral-600: #4b5563;
+    --neutral-700: #374151;
+    --neutral-800: #1f2937;
+    --neutral-900: #111827;
+    
+    /* Background Colors */
+    --bg-primary: #111827;      /* dark background */
+    --bg-secondary: #1f2937;     /* gray-800 */
+    --bg-tertiary: #374151;      /* gray-700 */
+    --bg-navbar: rgb(42, 44, 49);
+    --bg-overlay: rgba(0, 0, 0, 0.4);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #d1d5db;   /* gray-300 */
+    --text-tertiary: #9ca3af;    /* gray-400 */
+    --text-muted: #6b7280;       /* gray-500 */
+    --text-inverse: #111827;     /* dark text on light bg */
+    
+    /* Border Colors */
+    --border-light: #e5e7eb;     /* gray-200 */
+    --border-base: #d1d5db;      /* gray-300 */
+    --border-dark: #9ca3af;      /* gray-400 */
+    
+    /* State Colors */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #3b82f6;
+    
+    /* UI Properties */
+    --radius: 0.75rem;
+    --radius-sm: 0.375rem;
+    --radius-lg: 1rem;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: system-ui, sans-serif;
+  }
+  
+  .page-title {
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--primary);
+  }
+  
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: 5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .page-title {
+      font-size: 7rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .page-title {
+      font-size: 9rem;
+    }
+  }
+
+  .page-subtitle {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--secondary);
+  }
+  
+  @media (min-width: 768px) {
+    .page-subtitle {
+      font-size: 3rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .page-subtitle {
+      font-size: 4rem;
+    }
+  }
+  

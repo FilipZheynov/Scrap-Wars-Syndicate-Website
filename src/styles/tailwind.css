@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --font-headings: "Staatliches", sans-serif;
+  
+  /* Color System - Maps CSS variables to Tailwind utilities */
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-base: var(--primary-base);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-accent: var(--primary-accent);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-base: var(--secondary-base);
+  --color-secondary-dark: var(--secondary-dark);
+  
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-navbar: var(--bg-navbar);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-muted: var(--text-muted);
+}
