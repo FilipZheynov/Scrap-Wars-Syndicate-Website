@@ -6,7 +6,7 @@ export default function Banner() {
     <section className="w-full">
       <div className="relative w-full h-max">
         <div className="w-full h-96 md:h-[500px] lg:h-[700px] overflow-hidden">
-         <img src={BannerImg} alt="banner" className="w-full object-cover" />
+         <img src={BannerImg} alt="banner" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-[var(--bg-overlay)]"></div>
 
