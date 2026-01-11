@@ -1,0 +1,15 @@
+.embla {
+    overflow: hidden;
+    width: 60%;
+  }
+  .embla__container {
+    display: flex;
+  }
+  .embla__slide {
+    flex: 0 0 100%; /* Shows one slide at a time */
+    min-width: 0;
+  }
+  .embla__slide img {
+    width: 100%;
+    display: block;
+  }
