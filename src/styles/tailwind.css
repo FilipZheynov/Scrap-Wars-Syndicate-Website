@@ -2,6 +2,7 @@
 
 @theme {
   --font-headings: "Staatliches", sans-serif;
+  --font-texts: "Oswald", sans-serif;
   
   /* Color System - Maps CSS variables to Tailwind utilities */
   --color-primary: var(--primary);
@@ -24,4 +25,21 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
   --color-text-muted: var(--text-muted);
+}
+
+@theme {
+  /* 1. Define the animation utility name and its properties */
+  --animate-fadeIn: fadeIn 0.3s ease-out;
+
+  /* 2. Define the actual keyframes within the theme block */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

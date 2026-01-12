@@ -54,6 +54,7 @@
     /* Text Colors */
     --text-primary: #ffffff;
     --text-secondary: #d1d5db;   /* gray-300 */
+    --text-red: #eb2525;   
     --text-tertiary: #9ca3af;    /* gray-400 */
     --text-muted: #6b7280;       /* gray-500 */
     --text-inverse: #111827;     /* dark text on light bg */
@@ -108,20 +109,20 @@
   }
 
   .page-subtitle {
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: 400;
-    color: var(--secondary);
+    color: var(--text-primary);
   }
   
   @media (min-width: 768px) {
     .page-subtitle {
-      font-size: 3rem;
+      font-size: 5rem;
     }
   }
   
   @media (min-width: 1024px) {
     .page-subtitle {
-      font-size: 4rem;
+      font-size: 5rem;
     }
   }
   

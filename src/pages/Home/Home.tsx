@@ -1,8 +1,10 @@
-import "./home.css";
 import Banner from "../../components/custom/Banner";
 import AboutSection from "../../components/custom/AboutSection";
 import LineSection from "../../components/custom/LineSection";
 import PicturesSection from "../../components/custom/PicturesSection";
+import FAQ from "../../components/custom/FAQ";
+import JoinDiscordSection from "../../components/custom/JoinDiscordSection";
+import Info from "../../components/custom/Info";
 // import {Carousel} from "../../components/ui/Carousel";
 // import Pic1 from "../../assets/picture1.png"
 // import Pic2 from "../../assets/picture2.png"
@@ -20,6 +22,12 @@ export default function Home() {
       <AboutSection/>
       <LineSection/>
       <PicturesSection/>
+      <LineSection/>
+      <Info/>
+      <LineSection/>
+      <FAQ/>
+      <LineSection/>
+      <JoinDiscordSection/>
       {/* <Carousel>
         {Slides.map((src, i) => (
           <img key={i} src={src} alt={`Slide ${i + 1}`} />

@@ -54,24 +54,6 @@ export default function Navbar() {
           </NavLink>
 
           <NavLink
-            to="/about"
-            onClick={() => setIsMenuOpen(false)}
-            className={({ isActive }) =>
-              `${linkBase} ${isActive ? "text-[var(--primary-base)]" : "text-[var(--text-tertiary)]"}`
-            }
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/faq"
-            onClick={() => setIsMenuOpen(false)}
-            className={({ isActive }) =>
-              `${linkBase} ${isActive ? "text-[var(--primary-base)]" : "text-[var(--text-tertiary)]"}`
-            }
-          >
-            FAQ
-          </NavLink>
-          <NavLink
             to="/gamemodes"
             onClick={() => setIsMenuOpen(false)}
             className={({ isActive }) =>

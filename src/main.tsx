@@ -9,3 +9,10 @@ createRoot(document.getElementById("root")!).render(
       <App />
   </StrictMode>
 );
+
+
+// git add .
+// git commit -m "Changes"
+// git push origin main
+
+//npm run dev

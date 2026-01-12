@@ -23,7 +23,7 @@ export default function Card({
       {/* Content */}
       <div className="flex flex-col gap-2 md:gap-3 p-3 md:p-4">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-headings text-[var(--text-primary)] text-center">{title}</h2>
-        <p className="text-xs md:text-sm text-[var(--text-secondary)] text-center">{description}</p>
+        <p className="font-texts text-sm md:text-sm text-[var(--text-secondary)] text-center">{description}</p>
 
       </div>
     </div>
