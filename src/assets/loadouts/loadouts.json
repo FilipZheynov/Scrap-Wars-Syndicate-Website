@@ -1,0 +1,299 @@
+{
+  "globalItems": ["grenade_std", "grenade_big", "knife_combat", "medkit"],
+  "normal": {
+    "players_2": [
+      {
+        "variantName": "Medium Range",
+        "squad": [
+          { "role": "Assault", "items": ["stg44", "db_shotgun"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "thompson", "walther_p38"] }
+        ]
+      },
+      {
+        "variantName": "Long Range",
+        "squad": [
+          { "role": "Super-Sniper", "items": ["mosin_scoped", "thompson", "ptrd41"] },
+          { "role": "Sniper-AT", "items": ["bazooka_m20", "mosin_scoped", "walther_p38"] }
+        ]
+      }
+    ],
+    "players_3": [
+      {
+        "variantName": "Long Range",
+        "squad": [
+          { "role": "Super-Sniper", "items": ["mosin_scoped", "thompson", "sw_m29"] },
+          { "role": "Light AT", "items": ["thompson", "walther_p38", "ptrd41"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "ppsh", "colt"] }
+        ]
+      },
+      {
+        "variantName": "Medium Range 1",
+        "squad": [
+          { "role": "Assault", "items": ["stg44", "db_shotgun"] },
+          { "role": "Close Quarters", "items": ["mp40", "pump_shotgun"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "garand"] }
+        ]
+      },
+      {
+        "variantName": "Medium Range 2",
+        "squad": [
+          { "role": "Assault", "items": ["stg44", "sw_m10"] },
+          { "role": "Private", "items": ["ppsh", "walther_p38"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "ppsh"] }
+        ]
+      }
+    ],
+    "players_4": [
+      {
+        "variantName": "Medium Range 1",
+        "squad": [
+          { "role": "Assault", "items": ["stg44", "colt"] },
+          { "role": "Private", "items": ["thompson", "walther_p38"] },
+          { "role": "Super-Sniper", "items": ["thompson", "mosin_scoped"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "ppsh"] }
+        ]
+      },
+      {
+        "variantName": "Medium Range 2",
+        "squad": [
+          { "role": "Assault", "items": ["stg44", "db_shotgun"] },
+          { "role": "Close Quarters", "items": ["mp40", "pump_shotgun"] },
+          { "role": "Sniper", "items": ["ppsh", "mosin_scoped"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "pump_shotgun", "colt"] }
+        ]
+      },
+      {
+        "variantName": "Medium Range 3",
+        "squad": [
+          { "role": "Assault", "items": ["stg44", "garand"] },
+          { "role": "Close Quarters", "items": ["ppsh", "pump_shotgun"] },
+          { "role": "Sniper", "items": ["mosin_scoped", "mp40"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "garand"] }
+        ]
+      }
+    ],
+    "players_5": [
+      {
+        "variantName": "Medium Range",
+        "squad": [
+          { "role": "Assault", "items": ["stg44", "colt"] },
+          { "role": "Light AT", "items": ["mp40", "colt", "ptrd41"] },
+          { "role": "Sniper", "items": ["mosin_scoped", "walther_p38"] },
+          { "role": "Private", "items": ["ppsh", "colt"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "pump_shotgun"] }
+        ]
+      },
+      {
+        "variantName": "Short Range",
+        "squad": [
+          { "role": "Private", "items": ["thompson", "colt"] },
+          { "role": "Private", "items": ["thompson", "pump_shotgun"] },
+          { "role": "Close Quarters AT", "items": ["mp40", "pump_shotgun", "ptrd41"] },
+          { "role": "Light AT", "items": ["thompson", "db_shotgun", "ptrd41"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "pump_shotgun"] }
+        ]
+      },
+      {
+        "variantName": "Long Range",
+        "squad": [
+          { "role": "Assault", "items": ["stg44", "pump_shotgun"] },
+          { "role": "Light AT", "items": ["mp40", "colt", "ptrd41"] },
+          { "role": "Sniper", "items": ["mosin_scoped", "walther_p38"] },
+          { "role": "Sniper", "items": ["mp40", "mosin_scoped"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "pump_shotgun"] }
+        ]
+      }
+    ],
+    "players_6": [
+      {
+        "variantName": "Medium Range 1",
+        "squad": [
+          { "role": "Assault", "items": ["stg44", "colt"] },
+          { "role": "Private", "items": ["thompson", "walther_p38"] },
+          { "role": "Light AT", "items": ["thompson", "sw_m10", "ptrd41"] },
+          { "role": "Private", "items": ["thompson", "walther_p38"] },
+          { "role": "Private", "items": ["ppsh", "colt"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "pump_shotgun", "colt"] }
+        ]
+      },
+      {
+        "variantName": "Medium Range 2",
+        "squad": [
+          { "role": "Light AT", "items": ["thompson", "walther_p38", "ptrd41"] },
+          { "role": "Light AT", "items": ["thompson", "walther_p38", "ptrd41"] },
+          { "role": "Marksman", "items": ["garand", "walther_p38"] },
+          { "role": "Sniper", "items": ["mosin_scoped", "db_shotgun", "sw_m29"] },
+          { "role": "Close Quarters", "items": ["pump_shotgun", "thompson"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "thompson"] }
+        ]
+      },
+      {
+        "variantName": "Medium Range 3",
+        "squad": [
+          { "role": "Assault", "items": ["stg44", "colt"] },
+          { "role": "Assault", "items": ["stg44", "colt"] },
+          { "role": "Sniper", "items": ["mosin_scoped", "pump_shotgun"] },
+          { "role": "Close Quarters", "items": ["mp40", "pump_shotgun"] },
+          { "role": "Shit Private", "items": ["mp40", "colt"] },
+          { "role": "Heavy AT", "items": ["bazooka_m20", "thompson"] }
+        ]
+      }
+    ]
+  },
+  "attack_defend": {
+    "attackers": {
+      "players_2": [],
+      "players_3": [
+        {
+          "variantName": "Long Range",
+          "squad": [
+            { "role": "Sniper", "items": ["mosin_scoped", "pump_shotgun"] },
+            { "role": "Heavy AT", "items": ["bazooka_m20", "mp40", "sw_m29"] },
+            { "role": "Light AT", "items": ["ppsh", "colt", "ptrd41"] }
+          ]
+        },
+        {
+          "variantName": "Medium Range 1",
+          "squad": [
+            { "role": "Assault", "items": ["stg44", "walther_p38"] },
+            { "role": "Private", "items": ["thompson", "db_shotgun"] },
+            { "role": "Sniper", "items": ["mosin_scoped", "pump_shotgun"] }
+          ]
+        },
+        {
+          "variantName": "Short Range",
+          "squad": [
+            { "role": "Close Quarters", "items": ["pump_shotgun", "walther_p38"] },
+            { "role": "Close Quarters", "items": ["pump_shotgun", "mp40"] },
+            { "role": "Close Quarters AT", "items": ["pump_shotgun", "bazooka_m20"] }
+          ]
+        },
+        {
+          "variantName": "Medium Range 2",
+          "squad": [
+            { "role": "Assault", "items": ["stg44", "sw_m10"] },
+            { "role": "Shit Private", "items": ["mp40", "walther_p38"] },
+            { "role": "Heavy AT", "items": ["bazooka_m20", "mp40"] }
+          ]
+        }
+      ],
+      "players_4": [
+        {
+          "variantName": "Medium Range 1",
+          "squad": [
+            { "role": "Machine Gunner", "items": ["ppsh", "colt"] },
+            { "role": "Assault", "items": ["stg44", "sw_m10"] },
+            { "role": "Light AT", "items": ["ppsh", "walther_p38", "ptrd41"] },
+            { "role": "Flanker", "items": ["garand", "pump_shotgun"] }
+          ]
+        },
+        {
+          "variantName": "Short Range",
+          "squad": [
+            { "role": "Squad Leader", "items": ["thompson", "colt"] },
+            { "role": "Private", "items": ["thompson", "pump_shotgun"] },
+            { "role": "Heavy AT", "items": ["thompson", "bazooka_m20", "pump_shotgun"] },
+            { "role": "Light AT", "items": ["thompson", "pump_shotgun", "ptrd41"] }
+          ]
+        },
+        {
+          "variantName": "Medium Range 2",
+          "squad": [
+            { "role": "Machine Gunner", "items": ["ppsh", "walther_p38"] },
+            { "role": "Private", "items": ["thompson", "walther_p38"] },
+            { "role": "Private", "items": ["thompson", "walther_p38"] },
+            { "role": "Heavy AT", "items": ["thompson", "bazooka_m20"] }
+          ]
+        },
+        {
+          "variantName": "Long Range",
+          "squad": [
+            { "role": "Assault", "items": ["stg44", "db_shotgun"] },
+            { "role": "Marksman", "items": ["garand", "pump_shotgun"] },
+            { "role": "Sniper", "items": ["mosin_scoped", "mp40"] },
+            { "role": "Heavy AT", "items": ["thompson", "bazooka_m20"] }
+          ]
+        }
+      ],
+      "players_5": [],
+      "players_6": []
+    },
+    "defenders": {
+      "players_2": [],
+      "players_3": [
+        {
+          "variantName": "Long Range",
+          "squad": [
+            { "role": "Sniper", "items": ["mosin_scoped", "db_shotgun"] },
+            { "role": "Heavy AT", "items": ["bazooka_m20", "mp40", "sw_m29"] },
+            { "role": "Light AT", "items": ["ppsh", "colt", "ptrd41"] }
+          ]
+        },
+        {
+          "variantName": "Medium Range 1",
+          "squad": [
+            { "role": "Assault", "items": ["stg44", "walther_p38"] },
+            { "role": "Private", "items": ["thompson", "db_shotgun"] },
+            { "role": "Heavy AT", "items": ["bazooka_m20", "thompson"] }
+          ]
+        },
+        {
+          "variantName": "Medium Range 2",
+          "squad": [
+            { "role": "Sniper", "items": ["mosin_scoped", "thompson"] },
+            { "role": "Close Quarters", "items": ["pump_shotgun", "thompson"] },
+            { "role": "Heavy AT", "items": ["bazooka_m20", "thompson"] }
+          ]
+        },
+        {
+          "variantName": "Medium Range 3",
+          "squad": [
+            { "role": "Assault", "items": ["stg44", "sw_m10"] },
+            { "role": "Close Quarters", "items": ["pump_shotgun", "mp40"] },
+            { "role": "Private", "items": ["thompson", "colt"] }
+          ]
+        }
+      ],
+      "players_4": [
+        {
+          "variantName": "Medium Range 1",
+          "squad": [
+            { "role": "Machine Gunner", "items": ["ppsh", "colt"] },
+            { "role": "Assault", "items": ["ppsh", "sw_m10"] },
+            { "role": "Heavy AT", "items": ["ppsh", "bazooka_m20"] },
+            { "role": "Heavy AT", "items": ["bazooka_m20", "pump_shotgun", "colt"] }
+          ]
+        },
+        {
+          "variantName": "Medium Range 2",
+          "squad": [
+            { "role": "Assault", "items": ["stg44", "colt"] },
+            { "role": "Private", "items": ["thompson", "pump_shotgun"] },
+            { "role": "Marksman", "items": ["garand", "pump_shotgun"] },
+            { "role": "Heavy AT", "items": ["bazooka_m20", "pump_shotgun"] }
+          ]
+        },
+        {
+          "variantName": "Medium Range 3",
+          "squad": [
+            { "role": "Machine Gunner", "items": ["ppsh", "walther_p38"] },
+            { "role": "Private", "items": ["thompson", "db_shotgun"] },
+            { "role": "Sniper", "items": ["mosin_scoped", "pump_shotgun"] },
+            { "role": "Heavy AT", "items": ["bazooka_m20", "mp40"] }
+          ]
+        },
+        {
+          "variantName": "Medium Range 4",
+          "squad": [
+            { "role": "Private", "items": ["thompson", "colt"] },
+            { "role": "Private", "items": ["thompson", "colt"] },
+            { "role": "Private", "items": ["thompson", "pump_shotgun"] },
+            { "role": "Heavy AT", "items": ["bazooka_m20", "pump_shotgun"] }
+          ]
+        }
+      ],
+      "players_5": [],
+      "players_6": []
+    }
+  }
+}

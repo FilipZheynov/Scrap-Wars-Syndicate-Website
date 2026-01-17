@@ -1,5 +1,5 @@
 import Foldable from "../ui/Foldable"
-import { ScrollReveal } from "./ScrollReveal"
+import { ScrollReveal } from "../custom/ScrollReveal"
 
 interface FAQData {
     question: string;

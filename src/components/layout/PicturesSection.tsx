@@ -7,7 +7,7 @@ import Pic23 from "../../assets/picture23.jpg"
 import Pic3 from "../../assets/picture3.jpg"
 import Pic32 from "../../assets/picture32.jpg"
 import Pic33 from "../../assets/picture33.jpg"
-import { ScrollReveal } from "./ScrollReveal"
+import { ScrollReveal } from "../custom/ScrollReveal"
 
 export default function PicturesSection() {
     return (
@@ -38,7 +38,7 @@ export default function PicturesSection() {
                     <div className="absolute inset-0 z-20 transition-all duration-500 ease-out -translate-x-2 translate-y-2 -rotate-3 group-hover:-translate-y-60 group-hover:rotate-5">
                       <img src={Pic22} className="w-full h-full object-cover rounded-xl shadow-md border-2 border-[var(--primary)]" />
                     </div>
-                    <div className="absolute inset-0 z-30 transition-all duration-500 ease-out group-hover:-translate-x-2 group-hover:-translate-y-2">
+                    <div className="absolute inset-0 z-30 transition-all duration-500 ease-out group-hover:translate-x-2 group-hover:-translate-y-2">
                       <img src={Pic2} className="w-full h-full object-cover rounded-xl shadow-xl border-2 border-[var(--primary)]" />
                   </div>
                 </div>
@@ -47,7 +47,7 @@ export default function PicturesSection() {
             <p className="font-texts text-5xl text-[var(--text-secondary)] text-center content-center my-10  mt-15 md:mt-0">Great community</p>
             <div className="md:row-3">
               <ScrollReveal>
-                <div className="group relative w-full h-80 cursor-pointer">
+              <div className="group relative w-full h-80 cursor-pointer">
                     <div className="absolute inset-0 z-10 transition-all duration-500 ease-out translate-x-4 translate-y-4 rotate-6 group-hover:translate-y-60 group-hover:rotate-12">
                       <img src={Pic33} className="w-full h-full object-cover rounded-xl shadow-md border-2 border-[var(--primary)]" />
                     </div>

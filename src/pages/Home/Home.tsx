@@ -1,10 +1,11 @@
-import Banner from "../../components/custom/Banner";
-import AboutSection from "../../components/custom/AboutSection";
-import LineSection from "../../components/custom/LineSection";
-import PicturesSection from "../../components/custom/PicturesSection";
-import FAQ from "../../components/custom/FAQ";
-import JoinDiscordSection from "../../components/custom/JoinDiscordSection";
-import Info from "../../components/custom/Info";
+import Banner from "../../components/layout/Banner";
+import AboutSection from "../../components/layout/AboutSection";
+import LineSection from "../../components/layout/LineSection";
+import PicturesSection from "../../components/layout/PicturesSection";
+import FAQ from "../../components/layout/FAQ";
+import JoinDiscordSection from "../../components/layout/JoinDiscordSection";
+import Info from "../../components/layout/Info";
+import BackToTop from "../../components/layout/BackToTop";
 // import {Carousel} from "../../components/ui/Carousel";
 // import Pic1 from "../../assets/picture1.png"
 // import Pic2 from "../../assets/picture2.png"
@@ -18,16 +19,17 @@ export default function Home() {
   return (
     <section className="w-full">
       <Banner />
-      <LineSection/>
-      <AboutSection/>
-      <LineSection/>
-      <PicturesSection/>
-      <LineSection/>
-      <Info/>
-      <LineSection/>
-      <FAQ/>
-      <LineSection/>
-      <JoinDiscordSection/>
+      <LineSection />
+      <AboutSection />
+      <LineSection />
+      <PicturesSection />
+      <LineSection />
+      <Info />
+      <LineSection />
+      <FAQ />
+      <LineSection />
+      <JoinDiscordSection />
+      <BackToTop />
       {/* <Carousel>
         {Slides.map((src, i) => (
           <img key={i} src={src} alt={`Slide ${i + 1}`} />

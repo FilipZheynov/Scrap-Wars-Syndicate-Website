@@ -3,7 +3,7 @@ import Ammo from "../../assets/Ammo.png"
 import Baguette from "../../assets/Baguette.png"
 import STG from "../../assets/STG.png"
 import Card from "../ui/Card"
-import { ScrollReveal} from "./ScrollReveal"
+import { ScrollReveal} from "../custom/ScrollReveal"
 
 export default function AboutSection() {
   return (

@@ -1,5 +1,5 @@
 
-import ExpandingGallery from "./ExpandingHalfs"
+import ExpandingGallery from "../custom/ExpandingHalfs"
 
 export default function LoadoutsType() {
   return (
