@@ -3,7 +3,7 @@
     "id": "stg44",
     "name": "STG-44",
     "type": "Main",
-    "image": "../../assets/guns/STG44.png",
+    "image": "STG44.png",
     "canSwapTo": ["mosin_m44"],
     "stats": { "dmg": 34, "magazine": 30 }
   },
@@ -11,7 +11,7 @@
     "id": "thompson",
     "name": "Thompson",
     "type": "Main",
-    "image": "../../assets/guns/Thompson.png",
+    "image": "Thompson.png",
     "canSwapTo": ["ppsh", "mp40"],
     "stats": { "dmg": 24, "magazine": 30 }
   },
@@ -19,7 +19,7 @@
     "id": "ppsh",
     "name": "PPSH 41",
     "type": "Main",
-    "image": "../../assets/guns/PPSH.png",
+    "image": "PPSH.png",
     "canSwapTo": ["thompson", "mp40"],
     "stats": { "dmg": 19, "magazine": 35 }
   },
@@ -27,7 +27,7 @@
     "id": "mp40",
     "name": "MP-40",
     "type": "Main",
-    "image": "../../assets/guns/MP40.png",
+    "image": "MP40.png",
     "canSwapTo": ["ppsh"],
     "stats": { "dmg": 21, "magazine": 32 }
   },
@@ -35,7 +35,7 @@
     "id": "sw_m10",
     "name": "S&W Model 10",
     "type": "Sidearm",
-    "image": "../../assets/guns/Model10.png",
+    "image": "Model10.png",
     "canSwapTo": ["walther_p38", "colt", "sw_m29"],
     "stats": { "dmg": 27, "magazine": 6 }
   },
@@ -43,7 +43,7 @@
     "id": "walther_p38",
     "name": "Walther P38",
     "type": "Sidearm",
-    "image": "../../assets/guns/Walther.png",
+    "image": "Walther.png",
     "canSwapTo": ["sw_m10", "colt", "sw_m29"],
     "stats": { "dmg": 26, "magazine": 8 }
   },
@@ -51,7 +51,7 @@
     "id": "colt",
     "name": "Colt",
     "type": "Sidearm",
-    "image": "../../assets/guns/Colt.png",
+    "image": "Colt.png",
     "canSwapTo": ["walther_p38", "sw_m29"],
     "stats": { "dmg": 30, "magazine": 7 }
   },
@@ -59,7 +59,7 @@
     "id": "sw_m29",
     "name": "S&W Model 29",
     "type": "Sidearm",
-    "image": "../../assets/guns/Model29.png",
+    "image": "Model29.png",
     "canSwapTo": ["colt"],
     "stats": { "dmg": 45, "magazine": 6 }
   },
@@ -67,7 +67,7 @@
     "id": "garand",
     "name": "Garand",
     "type": "Rifle",
-    "image": "../../assets/guns/Garand.png",
+    "image": "Garand.png",
     "canSwapTo": ["db_shotgun"],
     "stats": { "dmg": 65, "magazine": 8 }
   },
@@ -75,7 +75,7 @@
     "id": "mosin_m44",
     "name": "Mosin M44",
     "type": "Rifle",
-    "image": "../../assets/guns/Mosin.png",
+    "image": "Mosin.png",
     "canSwapTo": ["pump_shotgun"],
     "stats": { "dmg": 100, "magazine": 5 }
   },
@@ -83,7 +83,7 @@
     "id": "mosin_scoped",
     "name": "Mosin (Scoped)",
     "type": "Sniper",
-    "image": "../../assets/guns/Mosin-scoped.png",
+    "image": "Mosin-Scoped.png",
     "canSwapTo": ["mosin_m44"],
     "stats": { "dmg": 100, "magazine": 5 }
   },
@@ -91,7 +91,7 @@
     "id": "pump_shotgun",
     "name": "Pump Shotgun",
     "type": "CQB",
-    "image": "../../assets/guns/Pump-shotgun.png",
+    "image": "Pump-shotgun.png",
     "canSwapTo": ["db_shotgun"],
     "stats": { "dmg": 100, "magazine": 6 }
   },
@@ -99,7 +99,7 @@
     "id": "db_shotgun",
     "name": "Double Barrel",
     "type": "CQB",
-    "image": "../../assets/guns/Double-barrel.png",
+    "image": "Double-barrel.png",
     "canSwapTo": ["pump_shotgun"],
     "stats": { "dmg": 100, "magazine": 2 }
   },
@@ -107,7 +107,7 @@
     "id": "bazooka_m20",
     "name": "Bazooka M20",
     "type": "Heavy",
-    "image": "../../assets/guns/Bazooka.png",
+    "image": "Bazooka.png",
     "canSwapTo": ["ptrd41", "stg44"],
     "stats": { "dmg": 200, "magazine": 1 }
   },
@@ -115,7 +115,7 @@
     "id": "ptrd41",
     "name": "PTRD 41",
     "type": "Heavy",
-    "image": "../../assets/guns/PTRD.png",
+    "image": "PTRD.png",
     "canSwapTo": [],
     "stats": { "dmg": 200, "magazine": 1 }
   },
@@ -123,7 +123,7 @@
     "id": "grenade_std",
     "name": "RG-42",
     "type": "Utility",
-    "image": "../../assets/guns/Grenade.png",
+    "image": "Grenade.png",
     "stats": { "dmg": 100, "magazine": 0 },
     "canSwapTo": []
   },
@@ -131,7 +131,7 @@
     "id": "grenade_big",
     "name": "Stielhandgranate 24",
     "type": "Utility",
-    "image": "../../assets/guns/GrenadeBig.png",
+    "image": "GrenadeBig.png",
     "stats": { "dmg": 150, "magazine": 0 },
     "canSwapTo": []
   },
@@ -139,7 +139,7 @@
     "id": "knife_combat",
     "name": "Knife",
     "type": "Melee",
-    "image": "../../assets/guns/Knife.png",
+    "image": "Knife.png",
     "stats": { "dmg": 35, "magazine": 0 },
     "canSwapTo": []
   },
@@ -147,7 +147,7 @@
     "id": "medkit",
     "name": "Medkit",
     "type": "Utility",
-    "image": "../../assets/guns/Medkit.png",
+    "image": "Medkit.png",
     "stats": { "dmg": 0, "magazine": 0 },
     "canSwapTo": []
   }

@@ -22,9 +22,13 @@ interface WeaponLibrary {
   [key: string]: Weapon;
 }
 
-const getImageUrl = (path: string) => {
-  // This creates a valid URL for assets inside the src folder
-  return new URL(path, import.meta.url).href;
+const getImageUrl = (name: string) => {
+  // Extract just the filename from the path if your JSON still has "../../assets..."
+  // Or better: update your JSON to just have the filename like "Walther.png"
+  const fileName = name.split('/').pop();
+
+  // This tells Vite: "Look in this specific folder for this specific filename"
+  return new URL(`../../assets/guns/${fileName}`, import.meta.url).href;
 };
 
 export const WeaponCard = ({ initialId }: { initialId: string }) => {
