@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/navbar.css";
-import Logo from "../../assets/SWSLogo.png"
+import Logo from "../../assets/SWSLogo.png";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +14,9 @@ export default function Navbar() {
         <div className="flex flex-row items-center justify-between w-full md:w-auto">
           <div className="flex flex-row items-center">
             <img src={Logo} className="w-12 h-12 md:w-16 md:h-16" alt="Logo" />
-            <h1 className="ml-2 md:ml-5 text-xl md:text-2xl lg:text-3xl font-headings text-[var(--primary-base)]">Scrap Wars Syndicate</h1>
+            <h1 className="ml-2 md:ml-5 text-xl md:text-2xl lg:text-3xl font-headings text-[var(--primary-base)]">
+              Scrap Wars Syndicate
+            </h1>
           </div>
 
           {/* Hamburger button - mobile only */}
@@ -42,7 +44,9 @@ export default function Navbar() {
         </div>
 
         {/* Menu items */}
-        <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row md:flex-wrap justify-center gap-2 md:gap-4 w-full md:w-auto pb-4 md:pb-0`}>
+        <div
+          className={`${isMenuOpen ? "flex" : "hidden"} md:flex flex-col md:flex-row md:flex-wrap justify-center gap-2 md:gap-4 w-full md:w-auto pb-4 md:pb-0`}
+        >
           <NavLink
             to="/"
             onClick={() => setIsMenuOpen(false)}
@@ -72,13 +76,13 @@ export default function Navbar() {
             Loadouts
           </NavLink>
           <NavLink
-            to="/wiki"
+            to="/calculator"
             onClick={() => setIsMenuOpen(false)}
             className={({ isActive }) =>
               `${linkBase} ${isActive ? "text-[var(--primary-base)]" : "text-[var(--text-tertiary)]"}`
             }
           >
-            Wiki
+            Calculator
           </NavLink>
         </div>
       </nav>

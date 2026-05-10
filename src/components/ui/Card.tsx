@@ -12,7 +12,7 @@ export default function Card({
   description,
 }: CardProps) {
   return (
-    <div className="flex flex-col rounded-xl overflow-hidden shadow-md shadow-red-700 hover:shadow-lg transition">
+    <div className="flex flex-col rounded-xl overflow-hidden bg-neutral-900 shadow-md shadow-red-700 hover:shadow-lg transition">
       {/* Image */}
       <img
         src={image}
