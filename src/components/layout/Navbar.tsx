@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/navbar.css";
-import Logo from "../../assets/SWSLogo.png";
+import Logo from "../../assets/SWSLogo.webp";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

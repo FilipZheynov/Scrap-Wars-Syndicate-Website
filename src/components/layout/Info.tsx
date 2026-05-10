@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import Card from "../ui/Card";
-import Ammo from "../../assets/Ammo.png";
-import STG from "../../assets/STG.png";
-import Baguette from "../../assets/Baguette.png";
+import Ammo from "../../assets/Ammo.webp";
+import STG from "../../assets/STG.webp";
+import Baguette from "../../assets/Baguette.webp";
 
 export default function Info() {
   return (

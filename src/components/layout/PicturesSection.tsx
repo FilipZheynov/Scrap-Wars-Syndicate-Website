@@ -1,12 +1,12 @@
-import Pic1 from "../../assets/picture1.png";
-import Pic12 from "../../assets/picture12.png";
-import Pic13 from "../../assets/picture13.png";
-import Pic2 from "../../assets/picture2.png";
-import Pic22 from "../../assets/picture22.png";
-import Pic23 from "../../assets/picture23.jpg";
-import Pic3 from "../../assets/picture3.jpg";
-import Pic32 from "../../assets/picture32.jpg";
-import Pic33 from "../../assets/picture33.jpg";
+import Pic1 from "../../assets/picture1.webp";
+import Pic12 from "../../assets/picture12.webp";
+import Pic13 from "../../assets/picture13.webp";
+import Pic2 from "../../assets/picture2.webp";
+import Pic22 from "../../assets/picture22.webp";
+import Pic23 from "../../assets/picture23.webp";
+import Pic3 from "../../assets/picture3.webp";
+import Pic32 from "../../assets/picture32.webp";
+import Pic33 from "../../assets/picture33.webp";
 import { ScrollReveal } from "../custom/ScrollReveal";
 
 export default function PicturesSection() {

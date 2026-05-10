@@ -10,14 +10,14 @@ const inputClassName =
 
 export const CannonCalculator = () => {
   const [mm, setMm] = useState(90);
-  const [shellType, setShellType] = useState<CannonShellType>("AP");
+  const [shellType, setShellType] = useState<CannonShellType>("APFSDS");
   const [realLifePen, setRealLifePen] = useState(140);
   const rows = useMemo(
     () =>
       generateCannonResults(
         mm,
         shellType,
-        shellType === "AP" ? realLifePen : undefined,
+        shellType === "APFSDS" ? realLifePen : undefined,
       ),
     [mm, shellType, realLifePen],
   );
@@ -35,8 +35,8 @@ export const CannonCalculator = () => {
           <input
             className={inputClassName}
             type="number"
-            min={20}
-            max={200}
+            min={37}
+            max={160}
             value={mm}
             onChange={(e) => setMm(Number(e.target.value) || 0)}
           />
@@ -50,15 +50,15 @@ export const CannonCalculator = () => {
             value={shellType}
             onChange={(e) => setShellType(e.target.value as CannonShellType)}
           >
-            <option value="AP">AP</option>
+            <option value="APFSDS">APFSDS</option>
             <option value="HEAT">HEAT</option>
             <option value="HE">HE</option>
           </select>
         </label>
-        {shellType === "AP" && (
+        {shellType === "APFSDS" && (
           <label className="flex flex-col gap-2">
             <span className="text-xs font-bold uppercase tracking-widest text-zinc-400">
-              Real-life Penetration (mm)
+              Penetration (real life/War Thunder)
             </span>
             <input
               className={inputClassName}

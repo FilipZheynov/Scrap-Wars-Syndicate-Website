@@ -24,9 +24,10 @@ type ShellStats = {
 };
 
 export type AutocannonShellType = "AP" | "HE";
-export type CannonShellType = "AP" | "HEAT" | "HE";
-export type IndirectShellType = "HE" | "SMOKE" | "INCENDIARY";
-export type RocketBombShellType = "ROCKET" | "BOMB";
+export type CannonShellType = "APFSDS" | "HEAT" | "HE";
+export type RocketCategory = "ATGM" | "Rocket" | "Bomb" | "Grenade";
+export type RocketType = "RocketPods" | "Thermobaric";
+export type AtgmType = "HEAT" | "HE";
 
 const round = (value: number, decimals = 2) => {
   const factor = 10 ** decimals;
@@ -88,74 +89,87 @@ export const generateAutocannonResults = (mm: number, shellType: AutocannonShell
 };
 
 export const generateCannonResults = (mm: number, shellType: CannonShellType, realLifePenetration?: number): StatRow[] => {
-  const b = getBracket(mm);
-  const basePen = realLifePenetration && realLifePenetration > 0 ? realLifePenetration : mm * 1.45;
-  const blastScale = mm / 60;
-
-  const byType: Record<CannonShellType, ShellStats[]> = {
-    AP: [
-      { spread: 0.42, explLvl: 7, explRad: 0.1, explImpRadius: 0, explImpStr: 0, gravity: 9, lifetime: 18, ricochetPct: 0.28, ricochetAngle: 68, normalization: 8, ignore: 4, shrapnelType: "Dense", fShrpCount: 6, fShrpDamage: 42, fShrpSpread: 360, wShrpCount: 5, wShrpDamage: 75, wShrpSpread: 32, fExplLvl: 0, fExplRadius: 0 },
-      { spread: 0.34, explLvl: 8, explRad: 0.12, explImpRadius: 0, explImpStr: 0, gravity: 9, lifetime: 20, ricochetPct: 0.25, ricochetAngle: 70, normalization: 10, ignore: 5, shrapnelType: "Dense", fShrpCount: 8, fShrpDamage: 50, fShrpSpread: 360, wShrpCount: 6, wShrpDamage: 85, wShrpSpread: 34, fExplLvl: 0, fExplRadius: 0 },
-      { spread: 0.28, explLvl: 8, explRad: 0.15, explImpRadius: 0, explImpStr: 0, gravity: 10, lifetime: 22, ricochetPct: 0.22, ricochetAngle: 72, normalization: 11, ignore: 6, shrapnelType: "Dense", fShrpCount: 10, fShrpDamage: 60, fShrpSpread: 360, wShrpCount: 8, wShrpDamage: 95, wShrpSpread: 36, fExplLvl: 0, fExplRadius: 0 },
-    ],
-    HEAT: [
-      { spread: 0.45, explLvl: 6, explRad: 0.28, explImpRadius: 2, explImpStr: 180, gravity: 10, lifetime: 18, ricochetPct: 0.2, ricochetAngle: 65, normalization: 2, ignore: 2, shrapnelType: "Jet", fShrpCount: 4, fShrpDamage: 30, fShrpSpread: 340, wShrpCount: 4, wShrpDamage: 55, wShrpSpread: 26, fExplLvl: 1, fExplRadius: 0.2 },
-      { spread: 0.38, explLvl: 7, explRad: 0.35, explImpRadius: 3, explImpStr: 260, gravity: 10, lifetime: 20, ricochetPct: 0.18, ricochetAngle: 68, normalization: 3, ignore: 3, shrapnelType: "Jet", fShrpCount: 5, fShrpDamage: 36, fShrpSpread: 340, wShrpCount: 5, wShrpDamage: 62, wShrpSpread: 28, fExplLvl: 1, fExplRadius: 0.25 },
-      { spread: 0.31, explLvl: 7, explRad: 0.44, explImpRadius: 4, explImpStr: 340, gravity: 11, lifetime: 22, ricochetPct: 0.15, ricochetAngle: 70, normalization: 4, ignore: 4, shrapnelType: "Jet", fShrpCount: 7, fShrpDamage: 42, fShrpSpread: 340, wShrpCount: 6, wShrpDamage: 68, wShrpSpread: 30, fExplLvl: 2, fExplRadius: 0.3 },
-    ],
-    HE: [
-      { spread: 0.47, explLvl: 4, explRad: round(0.65 * blastScale), explImpRadius: round(7 * blastScale), explImpStr: round(450 * blastScale), gravity: 11, lifetime: 17, ricochetPct: 0.3, ricochetAngle: 80, normalization: 0, ignore: 1, shrapnelType: "Fragmented", fShrpCount: Math.round(mm / 2.5), fShrpDamage: 85, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 50, fExplLvl: 0, fExplRadius: 0 },
-      { spread: 0.4, explLvl: 5, explRad: round(0.82 * blastScale), explImpRadius: round(9 * blastScale), explImpStr: round(580 * blastScale), gravity: 12, lifetime: 19, ricochetPct: 0.3, ricochetAngle: 80, normalization: 0, ignore: 1, shrapnelType: "Fragmented", fShrpCount: Math.round(mm / 2.3), fShrpDamage: 90, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 55, fExplLvl: 0, fExplRadius: 0 },
-      { spread: 0.34, explLvl: 6, explRad: round(1.05 * blastScale), explImpRadius: round(11 * blastScale), explImpStr: round(720 * blastScale), gravity: 12, lifetime: 21, ricochetPct: 0.3, ricochetAngle: 80, normalization: 0, ignore: 1, shrapnelType: "Fragmented", fShrpCount: Math.round(mm / 2.1), fShrpDamage: 95, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 60, fExplLvl: 0, fExplRadius: 0 },
-    ],
-  };
-
-  const penetration = shellType === "AP" ? Math.round(basePen) : shellType === "HEAT" ? Math.round(mm * 1.7) : 0;
-  return toSheet(byType[shellType][b], penetration);
+  const b = mm <= 60 ? 0 : mm <= 80 ? 1 : mm <= 99 ? 2 : 3;
+  if (shellType === "APFSDS") {
+    const penetration = round((realLifePenetration ?? 0) * 0.02407);
+    const table: ShellStats[] = [
+      { spread: 0.2, explLvl: 7, explRad: 0.1, explImpRadius: 0, explImpStr: 0, gravity: 10, lifetime: 15, ricochetPct: 0.3, ricochetAngle: 73, normalization: 5, ignore: 3, shrapnelType: "Weak", fShrpCount: 5, fShrpDamage: 25, fShrpSpread: 360, wShrpCount: 7, wShrpDamage: 60, wShrpSpread: 35, fExplLvl: 0, fExplRadius: 0 },
+      { spread: 0.2, explLvl: 8, explRad: 0.1, explImpRadius: 0, explImpStr: 0, gravity: 10, lifetime: 15, ricochetPct: 0.2, ricochetAngle: 73, normalization: 5, ignore: 3, shrapnelType: "Normal", fShrpCount: 5, fShrpDamage: 25, fShrpSpread: 360, wShrpCount: 11, wShrpDamage: 75, wShrpSpread: 35, fExplLvl: 3, fExplRadius: 0.3 },
+      { spread: 0.2, explLvl: 9, explRad: 0.1, explImpRadius: 0, explImpStr: 0, gravity: 10, lifetime: 20, ricochetPct: 0.2, ricochetAngle: 73, normalization: 5, ignore: 3, shrapnelType: "Normal", fShrpCount: 6, fShrpDamage: 25, fShrpSpread: 360, wShrpCount: 12, wShrpDamage: 75, wShrpSpread: 45, fExplLvl: 3, fExplRadius: 0.3 },
+      { spread: 0.1, explLvl: 50, explRad: 0.1, explImpRadius: 0, explImpStr: 0, gravity: 10, lifetime: 20, ricochetPct: 0.2, ricochetAngle: 73, normalization: 5, ignore: 2, shrapnelType: "Strong", fShrpCount: 8, fShrpDamage: 25, fShrpSpread: 360, wShrpCount: 14, wShrpDamage: 80, wShrpSpread: 50, fExplLvl: 4, fExplRadius: 0.4 },
+    ];
+    return toSheet(table[b], penetration);
+  }
+  if (shellType === "HEAT") {
+    const penetration = round(mm / (mm >= 81 ? 13 : 14));
+    const table: ShellStats[] = [
+      { spread: 0.2, explLvl: 6, explRad: 0.1, explImpRadius: 5, explImpStr: 500, gravity: 15, lifetime: 15, ricochetPct: 0.3, ricochetAngle: 80, normalization: 4, ignore: 2, shrapnelType: "Normal", fShrpCount: 20, fShrpDamage: 50, fShrpSpread: 360, wShrpCount: 3, wShrpDamage: 50, wShrpSpread: 8, fExplLvl: 0, fExplRadius: 0 },
+      { spread: 0.2, explLvl: 7, explRad: 0.1, explImpRadius: 6, explImpStr: 1000, gravity: 15, lifetime: 15, ricochetPct: 0.3, ricochetAngle: 80, normalization: 4, ignore: 2, shrapnelType: "Normal", fShrpCount: 25, fShrpDamage: 70, fShrpSpread: 360, wShrpCount: 4, wShrpDamage: 60, wShrpSpread: 8, fExplLvl: 0, fExplRadius: 0 },
+      { spread: 0.2, explLvl: 8, explRad: 0.1, explImpRadius: 7, explImpStr: 1000, gravity: 15, lifetime: 20, ricochetPct: 0.3, ricochetAngle: 80, normalization: 4, ignore: 2, shrapnelType: "Normal", fShrpCount: 30, fShrpDamage: 75, fShrpSpread: 360, wShrpCount: 5, wShrpDamage: 60, wShrpSpread: 10, fExplLvl: 0, fExplRadius: 0 },
+      { spread: 0.2, explLvl: 50, explRad: 0.1, explImpRadius: 8, explImpStr: 1000, gravity: 15, lifetime: 20, ricochetPct: 0.3, ricochetAngle: 80, normalization: 4, ignore: 2, shrapnelType: "Strong", fShrpCount: 40, fShrpDamage: 80, fShrpSpread: 360, wShrpCount: 6, wShrpDamage: 65, wShrpSpread: 12, fExplLvl: 0, fExplRadius: 0 },
+    ];
+    return toSheet(table[b], penetration);
+  }
+  const shrapnel = mm >= 100 ? Math.round(mm / 1.2) : mm >= 81 ? Math.round(mm / 1.1) : mm;
+  const table: ShellStats[] = [
+    { spread: 0.2, explLvl: 5, explRad: 0.3, explImpRadius: 7, explImpStr: 750, gravity: 20, lifetime: 15, ricochetPct: 0.3, ricochetAngle: 85, normalization: 0, ignore: 1, shrapnelType: "Strong", fShrpCount: shrapnel, fShrpDamage: 75, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 45, fExplLvl: 0, fExplRadius: 0 },
+    { spread: 0.2, explLvl: 5, explRad: 0.5, explImpRadius: 8, explImpStr: 1250, gravity: 20, lifetime: 15, ricochetPct: 0.3, ricochetAngle: 85, normalization: 0, ignore: 1, shrapnelType: "Strong", fShrpCount: shrapnel, fShrpDamage: 80, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 45, fExplLvl: 0, fExplRadius: 0 },
+    { spread: 0.2, explLvl: 5, explRad: 0.7, explImpRadius: 9, explImpStr: 1500, gravity: 20, lifetime: 20, ricochetPct: 0.3, ricochetAngle: 85, normalization: 0, ignore: 1, shrapnelType: "Strong", fShrpCount: shrapnel, fShrpDamage: 90, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 45, fExplLvl: 0, fExplRadius: 0 },
+    { spread: 0.2, explLvl: 5, explRad: 1, explImpRadius: 10, explImpStr: 1500, gravity: 20, lifetime: 20, ricochetPct: 0.3, ricochetAngle: 85, normalization: 0, ignore: 1, shrapnelType: "Strong", fShrpCount: shrapnel, fShrpDamage: 100, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 45, fExplLvl: 0, fExplRadius: 0 },
+  ];
+  return toSheet(table[b], 0);
 };
 
-export const generateIndirectResults = (mm: number, shellType: IndirectShellType, rpm: number): StatRow[] => {
-  const b = getBracket(Math.min(mm, 60));
-  const fireBonus = rpm > 10 ? 1.1 : 1;
-  const baseShrap = Math.round(mm / 2.4);
-  const byType: Record<IndirectShellType, ShellStats[]> = {
-    HE: [
-      { spread: 0.55, explLvl: 4, explRad: 0.8, explImpRadius: 8, explImpStr: 500, gravity: 16, lifetime: 24, ricochetPct: 0.1, ricochetAngle: 88, normalization: 0, ignore: 1, shrapnelType: "Arc Fragment", fShrpCount: Math.round(baseShrap * fireBonus), fShrpDamage: 68, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 45, fExplLvl: 1, fExplRadius: 0.35 },
-      { spread: 0.46, explLvl: 5, explRad: 1, explImpRadius: 10, explImpStr: 650, gravity: 17, lifetime: 26, ricochetPct: 0.1, ricochetAngle: 88, normalization: 0, ignore: 1, shrapnelType: "Arc Fragment", fShrpCount: Math.round(baseShrap * 1.1 * fireBonus), fShrpDamage: 74, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 48, fExplLvl: 1, fExplRadius: 0.4 },
-      { spread: 0.38, explLvl: 6, explRad: 1.2, explImpRadius: 12, explImpStr: 820, gravity: 18, lifetime: 28, ricochetPct: 0.1, ricochetAngle: 88, normalization: 0, ignore: 1, shrapnelType: "Arc Fragment", fShrpCount: Math.round(baseShrap * 1.2 * fireBonus), fShrpDamage: 80, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 52, fExplLvl: 2, fExplRadius: 0.5 },
-    ],
-    SMOKE: [
-      { spread: 0.5, explLvl: 1, explRad: 0.3, explImpRadius: 3, explImpStr: 0, gravity: 15, lifetime: 22, ricochetPct: 0, ricochetAngle: 89, normalization: 0, ignore: 0, shrapnelType: "None", fShrpCount: 0, fShrpDamage: 0, fShrpSpread: 0, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 0, fExplLvl: 0, fExplRadius: 1.2 },
-      { spread: 0.43, explLvl: 1, explRad: 0.35, explImpRadius: 4, explImpStr: 0, gravity: 16, lifetime: 24, ricochetPct: 0, ricochetAngle: 89, normalization: 0, ignore: 0, shrapnelType: "None", fShrpCount: 0, fShrpDamage: 0, fShrpSpread: 0, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 0, fExplLvl: 0, fExplRadius: 1.4 },
-      { spread: 0.36, explLvl: 1, explRad: 0.4, explImpRadius: 5, explImpStr: 0, gravity: 16, lifetime: 25, ricochetPct: 0, ricochetAngle: 89, normalization: 0, ignore: 0, shrapnelType: "None", fShrpCount: 0, fShrpDamage: 0, fShrpSpread: 0, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 0, fExplLvl: 0, fExplRadius: 1.7 },
-    ],
-    INCENDIARY: [
-      { spread: 0.52, explLvl: 2, explRad: 0.55, explImpRadius: 5, explImpStr: 220, gravity: 15, lifetime: 22, ricochetPct: 0.05, ricochetAngle: 85, normalization: 0, ignore: 0, shrapnelType: "Fire Fragment", fShrpCount: 6, fShrpDamage: 40, fShrpSpread: 330, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 20, fExplLvl: 2, fExplRadius: 0.7 },
-      { spread: 0.44, explLvl: 3, explRad: 0.68, explImpRadius: 6, explImpStr: 290, gravity: 16, lifetime: 23, ricochetPct: 0.05, ricochetAngle: 85, normalization: 0, ignore: 0, shrapnelType: "Fire Fragment", fShrpCount: 7, fShrpDamage: 45, fShrpSpread: 330, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 24, fExplLvl: 2, fExplRadius: 0.85 },
-      { spread: 0.37, explLvl: 4, explRad: 0.8, explImpRadius: 7, explImpStr: 360, gravity: 16, lifetime: 25, ricochetPct: 0.05, ricochetAngle: 85, normalization: 0, ignore: 0, shrapnelType: "Fire Fragment", fShrpCount: 8, fShrpDamage: 50, fShrpSpread: 330, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 28, fExplLvl: 3, fExplRadius: 1 },
-    ],
-  };
-  return toSheet(byType[shellType][b], 0);
+export const generateIndirectResults = (kg: number): StatRow[] => {
+  const b = kg <= 5 ? 0 : kg <= 10 ? 1 : kg <= 15 ? 2 : kg <= 20 ? 3 : 4;
+  const rows = [
+    { Spread: 0.3, "Expl. Lvl": 10, "Expl. Rad": "0.8-1.5", "Expl. Imp. Radius": 10, "Expl. Imp. Str": 1000, "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: 0, "Ignore Less Than": 1, "Shrapnel Type": "Strong", "F. Shrp Count": 80, "F. Shrp Speed": 200, "F. Shrp Damage": 75, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    { Spread: 0.2, "Expl. Lvl": 50, "Expl. Rad": "1.5-2.2", "Expl. Imp. Radius": 15, "Expl. Imp. Str": 1000, "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: 0, "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 100, "F. Shrp Speed": 200, "F. Shrp Damage": 85, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    { Spread: 0.1, "Expl. Lvl": 50, "Expl. Rad": "2.2-2.9", "Expl. Imp. Radius": 15, "Expl. Imp. Str": 1500, "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: 0, "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 120, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    { Spread: 0.1, "Expl. Lvl": 50, "Expl. Rad": "3.2-4.5", "Expl. Imp. Radius": 20, "Expl. Imp. Str": 2000, "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: 0, "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 165, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 2, "F. Expl Radius": 0 },
+    { Spread: 0.1, "Expl. Lvl": 50, "Expl. Rad": "4.5-5.5", "Expl. Imp. Radius": 20, "Expl. Imp. Str": 2000, "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: 0, "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 180, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 3, "F. Expl Radius": 0.3 },
+  ][b];
+
+  return Object.entries(rows).map(([label, value]) => ({ label, value }));
 };
 
 export const generateRocketBombResults = (
-  caliberMm: number,
-  shellType: RocketBombShellType,
-  payloadKg: number,
+  category: RocketCategory,
+  options: { atgmType?: AtgmType; rocketType?: RocketType; bombKg?: number; grenadeMm?: number },
 ): StatRow[] => {
-  const b = getBracket(Math.min(caliberMm, 60));
-  const payloadScale = Math.max(payloadKg / 12, 0.4);
-  const base: Record<RocketBombShellType, ShellStats[]> = {
-    ROCKET: [
-      { spread: 0.65, explLvl: 4, explRad: round(0.8 * payloadScale), explImpRadius: round(9 * payloadScale), explImpStr: round(520 * payloadScale), gravity: 12, lifetime: 20, ricochetPct: 0.12, ricochetAngle: 78, normalization: 1, ignore: 1, shrapnelType: "Rocket Frag", fShrpCount: round(8 * payloadScale), fShrpDamage: 75, fShrpSpread: 350, wShrpCount: round(4 * payloadScale), wShrpDamage: 40, wShrpSpread: 40, fExplLvl: 1, fExplRadius: round(0.5 * payloadScale) },
-      { spread: 0.55, explLvl: 5, explRad: round(1 * payloadScale), explImpRadius: round(11 * payloadScale), explImpStr: round(640 * payloadScale), gravity: 12, lifetime: 21, ricochetPct: 0.1, ricochetAngle: 80, normalization: 1, ignore: 1, shrapnelType: "Rocket Frag", fShrpCount: round(10 * payloadScale), fShrpDamage: 82, fShrpSpread: 350, wShrpCount: round(5 * payloadScale), wShrpDamage: 45, wShrpSpread: 45, fExplLvl: 1, fExplRadius: round(0.6 * payloadScale) },
-      { spread: 0.48, explLvl: 6, explRad: round(1.2 * payloadScale), explImpRadius: round(13 * payloadScale), explImpStr: round(760 * payloadScale), gravity: 13, lifetime: 22, ricochetPct: 0.08, ricochetAngle: 82, normalization: 2, ignore: 2, shrapnelType: "Rocket Frag", fShrpCount: round(12 * payloadScale), fShrpDamage: 88, fShrpSpread: 350, wShrpCount: round(6 * payloadScale), wShrpDamage: 50, wShrpSpread: 50, fExplLvl: 2, fExplRadius: round(0.75 * payloadScale) },
-    ],
-    BOMB: [
-      { spread: 0.7, explLvl: 5, explRad: round(1.3 * payloadScale), explImpRadius: round(14 * payloadScale), explImpStr: round(900 * payloadScale), gravity: 18, lifetime: 15, ricochetPct: 0, ricochetAngle: 89, normalization: 0, ignore: 1, shrapnelType: "Heavy Fragment", fShrpCount: round(14 * payloadScale), fShrpDamage: 96, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 60, fExplLvl: 2, fExplRadius: round(0.9 * payloadScale) },
-      { spread: 0.62, explLvl: 6, explRad: round(1.6 * payloadScale), explImpRadius: round(17 * payloadScale), explImpStr: round(1100 * payloadScale), gravity: 19, lifetime: 15, ricochetPct: 0, ricochetAngle: 89, normalization: 0, ignore: 1, shrapnelType: "Heavy Fragment", fShrpCount: round(16 * payloadScale), fShrpDamage: 104, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 65, fExplLvl: 2, fExplRadius: round(1.1 * payloadScale) },
-      { spread: 0.55, explLvl: 7, explRad: round(1.9 * payloadScale), explImpRadius: round(20 * payloadScale), explImpStr: round(1300 * payloadScale), gravity: 20, lifetime: 15, ricochetPct: 0, ricochetAngle: 89, normalization: 0, ignore: 1, shrapnelType: "Heavy Fragment", fShrpCount: round(20 * payloadScale), fShrpDamage: 112, fShrpSpread: 360, wShrpCount: 0, wShrpDamage: 0, wShrpSpread: 70, fExplLvl: 3, fExplRadius: round(1.3 * payloadScale) },
-    ],
-  };
-  return toSheet(base[shellType][b], 0);
+  const atgmMap = {
+    HEAT: { Spread: 0, "Expl. Lvl": 50, "Expl. Rad": "0.1", "Expl. Imp. Radius": 5, "Expl. Imp. Str": 1000, Gravity: 0, Lifetime: "15", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 5, Penetration: "8-20", "Ignore Less Than": 2, "Shrapnel Type": "Strong", "F. Shrp Count": 20, "F. Shrp Speed": 200, "F. Shrp Damage": 50, "F. Shrp Spread": 360, "W. Shrp Count": 10, "W. Shrp Speed": 200, "W. Shrp Damage": 75, "W. Shrp Spread": 45, "F. Expl. Lvl": 3, "F. Expl Radius": 0.4 },
+    HE: { Spread: 0, "Expl. Lvl": 5, "Expl. Rad": "0.8-1.25", "Expl. Imp. Radius": 10, "Expl. Imp. Str": 1500, Gravity: 0, Lifetime: "15", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "0", "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 70, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+  } as const;
+  const rocketMap = {
+    RocketPods: { Spread: 0, "Expl. Lvl": 50, "Expl. Rad": "0.3", "Expl. Imp. Radius": 5, "Expl. Imp. Str": 500, Gravity: 10, Lifetime: "15", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "0", "Ignore Less Than": 1, "Shrapnel Type": "Normal", "F. Shrp Count": 15, "F. Shrp Speed": 200, "F. Shrp Damage": 50, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    Thermobaric: { Spread: 0, "Expl. Lvl": 6, "Expl. Rad": "Depends", "Expl. Imp. Radius": 10, "Expl. Imp. Str": 1500, Gravity: 10, Lifetime: "15", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "0", "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 50, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+  } as const;
+  const bombKg = options.bombKg ?? 10;
+  const bombIndex = bombKg <= 10 ? 0 : bombKg <= 50 ? 1 : bombKg <= 100 ? 2 : bombKg <= 250 ? 3 : bombKg <= 500 ? 4 : 5;
+  const bombRows = [
+    { Spread: 0, "Expl. Lvl": 50, "Expl. Rad": "0.3-1.4", "Expl. Imp. Radius": 5, "Expl. Imp. Str": 500, Gravity: 0, Lifetime: "0.01", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "0", "Ignore Less Than": 1, "Shrapnel Type": "Strong", "F. Shrp Count": 15, "F. Shrp Speed": 200, "F. Shrp Damage": 50, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    { Spread: 0, "Expl. Lvl": 50, "Expl. Rad": "1.6", "Expl. Imp. Radius": 10, "Expl. Imp. Str": 1000, Gravity: 0, Lifetime: "0.01", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "0", "Ignore Less Than": 1, "Shrapnel Type": "Strong", "F. Shrp Count": 50, "F. Shrp Speed": 200, "F. Shrp Damage": 50, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    { Spread: 0, "Expl. Lvl": 50, "Expl. Rad": "2.6", "Expl. Imp. Radius": 15, "Expl. Imp. Str": 1000, Gravity: 0, Lifetime: "0.01", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "0", "Ignore Less Than": 1, "Shrapnel Type": "Strong", "F. Shrp Count": 70, "F. Shrp Speed": 200, "F. Shrp Damage": 80, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    { Spread: 0, "Expl. Lvl": 50, "Expl. Rad": "5.8", "Expl. Imp. Radius": 15, "Expl. Imp. Str": 1500, Gravity: 0, Lifetime: "0.01", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "0", "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 110, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    { Spread: 0, "Expl. Lvl": 50, "Expl. Rad": "7.6", "Expl. Imp. Radius": 20, "Expl. Imp. Str": 2000, Gravity: 0, Lifetime: "0.01", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "0", "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 140, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    { Spread: 0, "Expl. Lvl": 50, "Expl. Rad": "10", "Expl. Imp. Radius": 25, "Expl. Imp. Str": 3000, Gravity: 0, Lifetime: "0.01", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "0", "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 150, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+  ] as const;
+  const grenadeMm = options.grenadeMm ?? 40;
+  const grenadeIndex = grenadeMm < 40 ? 0 : grenadeMm === 40 ? 1 : 2;
+  const grenadeRows = [
+    { Spread: 0, "Expl. Lvl": 2, "Expl. Rad": "0.5", "Expl. Imp. Radius": 0, "Expl. Imp. Str": 100, Gravity: 0, Lifetime: "30", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "1", "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 9, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    { Spread: 0, "Expl. Lvl": 3, "Expl. Rad": "0.75", "Expl. Imp. Radius": 1, "Expl. Imp. Str": 100, Gravity: 0, Lifetime: "30", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "1", "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 12, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+    { Spread: 0, "Expl. Lvl": 3, "Expl. Rad": "1", "Expl. Imp. Radius": 2, "Expl. Imp. Str": 100, Gravity: 0, Lifetime: "30", "Projectile Type": "-", "Ricochet %": 0, "Ricochet Angle": 90, Normalization: 0, Penetration: "1", "Ignore Less Than": 1, "Shrapnel Type": "Forceful", "F. Shrp Count": 14, "F. Shrp Speed": 200, "F. Shrp Damage": 100, "F. Shrp Spread": 360, "W. Shrp Count": 0, "W. Shrp Speed": 200, "W. Shrp Damage": 0, "W. Shrp Spread": 45, "F. Expl. Lvl": 0, "F. Expl Radius": 0 },
+  ] as const;
+
+  const selected =
+    category === "ATGM"
+      ? atgmMap[options.atgmType ?? "HEAT"]
+      : category === "Rocket"
+        ? rocketMap[options.rocketType ?? "RocketPods"]
+        : category === "Bomb"
+          ? bombRows[bombIndex]
+          : grenadeRows[grenadeIndex];
+  return Object.entries(selected).map(([label, value]) => ({ label, value }));
 };
