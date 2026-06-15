@@ -27,7 +27,7 @@ export default function Banner() {
           <Button
             className="mt-4 md:mt-5 bg-red text-lg"
             variant="primary"
-            to="https://discord.gg/Y63RSd86"
+            to="https://discord.gg/vd8QzCCmBk"
           >
             Join Discord Server
           </Button>
